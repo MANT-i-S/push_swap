@@ -1,0 +1,14 @@
+sa\sb = 1.do_sa_sb;
+
+ss = 1.do_sa_sb twice with different stacks;
+
+pa\pb = 1.pre_pa_pb;
+		2.rm_first_node;
+
+ra\rb = 1.do_ra_rb;
+
+rr = 1.do_ra_rb twice with different stacks;
+
+rra\rrb = 1.do_rra_rrb;
+
+rrr = 1.do_rra_rrb twice with different stacks;
