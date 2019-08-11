@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_commands.c                                    :+:      :+:    :+:   */
+/*   read_commands.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:50:56 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 16:57:21 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/10 20:07:40 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+char	**read_commands(char **cmd)
 {
 	int j;
+	char buff[22];
 
-	j = 1;
-	if (ac < 2)
-	return(error("Please enter operator commands"));
-	while (j < ac)
+	j = 0;
+	while(read(0, buff, 22))
+		cmd = ft_strsplit(buff, ' ');
+	while (cmd[j] != NULL)
 	{
-		if(ft_strcmp(av[j], "sa") && ft_strcmp(av[j], "sb") && ft_strcmp(av[j], "ss")
-		&& ft_strcmp(av[j], "pa") && ft_strcmp(av[j], "pb") && ft_strcmp(av[j], "ra")
-		&& ft_strcmp(av[j], "rb") && ft_strcmp(av[j], "rr") && ft_strcmp(av[j], "rra")
-		&& ft_strcmp(av[j], "rrb") && ft_strcmp(av[j], "rrr"))
-		return(error("Please use correct commands"));
-		//store into the file. Plans changed xD Store eather store into array or take it as an input..
+		if(cmd_check(cmd[j], "sa") && cmd_check(cmd[j], "sb") && cmd_check(cmd[j], "ss")
+		&& cmd_check(cmd[j], "pa") && cmd_check(cmd[j], "pb") && cmd_check(cmd[j], "ra")
+		&& cmd_check(cmd[j], "rb") && cmd_check(cmd[j], "rr") && cmd_check(cmd[j], "rra")
+		&& cmd_check(cmd[j], "rrb") && cmd_check(cmd[j], "rrr"))
+		error("Please use correct commands");
 		j++;
 	}
-	return(0);
+	return(cmd);
 }

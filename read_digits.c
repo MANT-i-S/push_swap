@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:27:52 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 16:57:23 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/10 20:07:51 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ t_list *read_digits(t_list *stack_a)
 	    error("Please don't use same digits");
         j--;
     }
+    ft_strdel(digits);
     return(stack_a);
 }

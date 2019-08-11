@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 16:36:01 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/10 20:07:49 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 
 void print_list(t_list *list);
 int ft_strdigits(char *str);
+int	cmd_check(const char *s1, const char *s2);
 int error(char *msg);
 int	repeat_check(t_list *stack_a, int num);
 t_list	*add_link(t_list *list, int num);
@@ -38,8 +39,9 @@ t_list	*pre_pa_pb(t_list *stack_a, t_list *stack_b);
 t_list	*rm_first_node(t_list *stack);
 void	do_ra_rb(t_list *stack);
 void	do_rra_rrb(t_list *stack);
-t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char *str);
-t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char *str);
+t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd);
+t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*read_digits(t_list *stack_a);
+char	**read_commands(char **cmd);
 
 #endif

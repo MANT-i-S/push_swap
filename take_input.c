@@ -6,13 +6,13 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:31:31 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 16:36:55 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/10 20:07:52 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main()
+int main(int ac, char **av)
 {
 	t_list *stack_a;
 
