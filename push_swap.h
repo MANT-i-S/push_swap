@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 17:07:43 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/13 20:31:51 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*read_digits(t_list *stack_a);
 char	**read_commands(char **cmd);
-int	find_mid(t_list *stack_a);
+int	find_median(t_list *stack);
 char *analyse(t_list *stack_a);
 char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 char *bubble_a(t_list *stack_a, char *str);

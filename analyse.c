@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 18:03:10 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 17:13:10 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/13 20:32:12 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *analyse(t_list *stack_a)
 
     stack_b = NULL;
     str = ft_strnew(0);
-    mid = find_mid(stack_a);
+    mid = find_median(stack_a);
     str = divide(stack_a, stack_b, str, mid);
     return(str);
 }

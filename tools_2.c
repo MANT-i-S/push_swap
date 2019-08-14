@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 17:38:34 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/13 20:48:03 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,35 @@ int	cmd_check(const char *s1, const char *s2)
 	return (0);
 }
 
-int	find_mid(t_list *stack_a)
+int	find_median(t_list *stack)
 {
-	int a;
-    int b;
     int mid;
-    //int *mmm[3] = {a, mid, b};
-    
-	while(stack_a->next != NULL)
-	{
-		mid = stack_a->node;
-		stack_a = stack_a->next;
-		if (stack_a->node > mid && mid > a)
+    int len;
+    int more = 0;
+    int less = 0;
+    t_list *begin;
+
+    begin = stack;
+    len = node_count(stack);
+    len--;
+    len = len / 2;
+    while(more != len && less != len)
+    {
+        more = 0;
+        less = 0;
+        mid = stack->node;
+        while(stack->next != NULL)
         {
-            b = mid;
-            mid = stack_a->node;
+            stack = stack->next;
+            if (mid > stack->node)
+            more++;
+            if (mid < stack->node)
+            less++;
         }
-        if (stack_a->node < mid && mid > b)
-        {
-            a = mid;
-            mid = stack_a->node;
-        }
-	}
+        stack = begin;
+        stack = stack->next;
+        begin = begin->next;
+    }
 	return(mid);
 }
 
@@ -67,7 +74,7 @@ int node_count(t_list *stack)
 {
     int i;
 
-    i = 0;
+    i = 1;
     while(stack->next != NULL) //count, if sorter can do whole row without switching mean its sorted.
     {
         stack = stack->next;
