@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 20:07:49 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/13 17:07:43 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void print_list(t_list *list);
 int ft_strdigits(char *str);
 int	cmd_check(const char *s1, const char *s2);
 int error(char *msg);
+int node_count(t_list *stack);
 int	repeat_check(t_list *stack_a, int num);
 t_list	*add_link(t_list *list, int num);
 t_list	*push_swap(t_list *stack_a);
@@ -43,5 +44,12 @@ t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*read_digits(t_list *stack_a);
 char	**read_commands(char **cmd);
+int	find_mid(t_list *stack_a);
+char *analyse(t_list *stack_a);
+char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
+char *bubble_a(t_list *stack_a, char *str);
+char *bubble_b(t_list *stack_b, char *str);
+char *merge(t_list *stack_a, t_list *stack_b, char *str);
+char *double_bubble(t_list *stack_a, t_list *stack_b, char *str, int mid);
 
 #endif

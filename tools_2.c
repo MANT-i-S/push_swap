@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 20:07:43 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/13 17:38:34 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,42 @@ int	cmd_check(const char *s1, const char *s2)
 	if (*s1 != *s2 && *s1 != '\n' && *s1 != ' ')
 		return (1);
 	return (0);
+}
+
+int	find_mid(t_list *stack_a)
+{
+	int a;
+    int b;
+    int mid;
+    //int *mmm[3] = {a, mid, b};
+    
+	while(stack_a->next != NULL)
+	{
+		mid = stack_a->node;
+		stack_a = stack_a->next;
+		if (stack_a->node > mid && mid > a)
+        {
+            b = mid;
+            mid = stack_a->node;
+        }
+        if (stack_a->node < mid && mid > b)
+        {
+            a = mid;
+            mid = stack_a->node;
+        }
+	}
+	return(mid);
+}
+
+int node_count(t_list *stack)
+{
+    int i;
+
+    i = 0;
+    while(stack->next != NULL) //count, if sorter can do whole row without switching mean its sorted.
+    {
+        stack = stack->next;
+        i++;
+    }
+        return(i);
 }
