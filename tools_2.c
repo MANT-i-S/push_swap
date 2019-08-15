@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 20:48:03 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/14 19:09:25 by mantis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,38 +36,6 @@ int	cmd_check(const char *s1, const char *s2)
 	if (*s1 != *s2 && *s1 != '\n' && *s1 != ' ')
 		return (1);
 	return (0);
-}
-
-int	find_median(t_list *stack)
-{
-    int mid;
-    int len;
-    int more = 0;
-    int less = 0;
-    t_list *begin;
-
-    begin = stack;
-    len = node_count(stack);
-    len--;
-    len = len / 2;
-    while(more != len && less != len)
-    {
-        more = 0;
-        less = 0;
-        mid = stack->node;
-        while(stack->next != NULL)
-        {
-            stack = stack->next;
-            if (mid > stack->node)
-            more++;
-            if (mid < stack->node)
-            less++;
-        }
-        stack = begin;
-        stack = stack->next;
-        begin = begin->next;
-    }
-	return(mid);
 }
 
 int node_count(t_list *stack)

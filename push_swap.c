@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:54:39 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 17:06:23 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/14 17:32:37 by mantis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_list	*push_swap(t_list *stack_a)
 {
-	t_list *stack_b;
+	// t_list *stack_b;
 
-	stack_b = NULL;
+	// stack_b = NULL;
 	
 	printf("%s\n", "-------------");
 	print_list(stack_a);
