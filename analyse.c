@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   analyse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 18:03:10 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/13 20:32:12 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/14 21:32:29 by mantis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,46 @@ char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid)
 
 char *bubble_a(t_list *stack_a, char *str)
 {
-    int len;
-    int check;
-
-    len = node_count(stack_a);
-    check = len;
-    while (check)
+    while (!correct_order(stack_a))
     {
-        if (stack_a->node < stack_a->next->node)
+		if (stack_a->node < stack_a->next->node)
+		{
+			str = ft_strjoin(str, "ra\n");
+            do_ra_rb(stack_a);
+		}
+        else if (stack_a->node > stack_a->next->node)
         {
             str = ft_strjoin(str, "sa\n");
             do_sa_sb(stack_a);
-            check--;
-        }
-        else if (stack_a->node > stack_a->next->node)
-        {
-            str = ft_strjoin(str, "ra\n");
-            do_ra_rb(stack_a);
-            check = len;
         }
     }
     return(str);
 }
+
+// char *bubble_a(t_list *stack_a, char *str)
+// {
+//     int len;
+//     int check;
+
+//     len = node_count(stack_a);
+//     check = len;
+//     while (check)
+//     {
+//         if (stack_a->node < stack_a->next->node)
+//         {
+//             str = ft_strjoin(str, "sa\n");
+//             do_sa_sb(stack_a);
+//             check--;
+//         }
+//         else if (stack_a->node > stack_a->next->node)
+//         {
+//             str = ft_strjoin(str, "ra\n");
+//             do_ra_rb(stack_a);
+//             check = len;
+//         }
+//     }
+//     return(str);
+// }
 
 char *bubble_b(t_list *stack_b, char *str)
 {
