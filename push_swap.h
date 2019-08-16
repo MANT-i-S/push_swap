@@ -6,7 +6,7 @@
 /*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/14 21:32:42 by mantis           ###   ########.fr       */
+/*   Updated: 2019/08/15 18:34:12 by mantis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ char	**read_commands(char **cmd);
 int	find_median(t_list *stack);
 int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
-char *analyse(t_list *stack_a);
-char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
-char *bubble_a(t_list *stack_a, char *str);
-char *bubble_b(t_list *stack_b, char *str);
+char *just_sort(t_list *stack_a, char *str);
+// char *analyse(t_list *stack_a);
+// char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
+// char *bubble_a(t_list *stack_a, char *str);
+// char *bubble_b(t_list *stack_b, char *str);
 char *merge(t_list *stack_a, t_list *stack_b, char *str);
-char *double_bubble(t_list *stack_a, t_list *stack_b, char *str, int mid);
 
 #endif

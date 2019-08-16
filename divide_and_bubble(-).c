@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   analyse.c                                          :+:      :+:    :+:   */
+/*   divide_and_bubble(-).c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/11 18:03:10 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/14 21:32:29 by mantis           ###   ########.fr       */
+/*   Updated: 2019/08/15 18:32:12 by mantis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,17 +124,17 @@ char *bubble_b(t_list *stack_b, char *str)
     return(str);
 }
 
-char *merge(t_list *stack_a, t_list *stack_b, char *str)
-{
-    int len;
+// char *merge(t_list *stack_a, t_list *stack_b, char *str)
+// {
+//     int len;
 
-    len = node_count(stack_b);
-    while(len)
-    {
-        str = ft_strjoin(str, "pb\n");
-        pre_pa_pb(stack_b, stack_a);
-        stack_b = rm_first_node(stack_b);
-        len--;
-    }
-    return(str);
-}
+//     len = node_count(stack_b);
+//     while(len)
+//     {
+//         str = ft_strjoin(str, "pb\n");
+//         pre_pa_pb(stack_b, stack_a);
+//         stack_b = rm_first_node(stack_b);
+//         len--;
+//     }
+//     return(str);
+// }
