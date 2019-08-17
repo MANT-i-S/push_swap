@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_4_42.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:24:30 by mantis            #+#    #+#             */
-/*   Updated: 2019/08/15 18:37:58 by mantis           ###   ########.fr       */
+/*   Updated: 2019/08/16 20:17:55 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *just_sort(t_list *stack_a, char *str)
+char *sort_4_42(t_list *stack_a, char *str)
 {
 	int len;
 	int less;
@@ -22,7 +22,7 @@ char *just_sort(t_list *stack_a, char *str)
 
 	stack_b = NULL;
 	len = node_count(stack_a);
-    while(len)
+    while(len != 1)
     {
 		begin = stack_a;
         less = 1;
@@ -63,5 +63,6 @@ char *merge(t_list *stack_a, t_list *stack_b, char *str)
         stack_b = rm_first_node(stack_b);
         len--;
     }
+    //print_list(stack_a); //remove;
     return(str);
 }
