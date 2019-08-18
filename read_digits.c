@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/09 15:27:52 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/10 20:07:51 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/17 11:52:04 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_list *read_digits(t_list *stack_a)
         num = ft_atoi(digits[j]);
         stack_a = add_link(stack_a, num);
         if (repeat_check(stack_a, num))
-	    error("Please don't use same digits");
+	    error("Error : Please don't use same digits");
         j--;
     }
     ft_strdel(digits);

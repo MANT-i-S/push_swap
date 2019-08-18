@@ -1,14 +1,22 @@
-sa\sb = 1.do_sa_sb;
+[sa\sb] = 1.(do_sa_sb); |swap a - swap the first 2 elements at the top of stack a. Do nothing if there
+is only one or no elements).| **\** |swap b - swap the first 2 elements at the top of stack b. Do nothing if there
+is only one or no elements).|
 
-ss = 1.do_sa_sb twice with different stacks;
+[ss] = 1.(do_sa_sb) twice with different stacks; |sa and sb at the same time.|
 
-pa\pb = 1.pre_pa_pb;
-		2.rm_first_node;
+[pa\pb] = 1.{returns stack}(pre_pa_pb);
+		2.{returns stack}(rm_first_node); |push a - take the first element at the top of b and put it at the top of a. Do
+nothing if b is empty.| **\** |push b - take the first element at the top of a and put it at the top of b. Do
+nothing if a is empty.|
 
-ra\rb = 1.do_ra_rb;
+[ra\rb] = 1.(do_ra_rb); |rotate a - shift up all elements of stack a by 1. The first element becomes
+the last one.| **\** |rotate b - shift up all elements of stack b by 1. The first element becomes
+the last one.|
 
-rr = 1.do_ra_rb twice with different stacks;
+[rr] = 1.(do_ra_rb) twice with different stacks;|ra and rb at the same time.|
 
-rra\rrb = 1.do_rra_rrb;
+[rra\rrb] = 1.(do_rra_rrb); |reverse rotate a - shift down all elements of stack a by 1. The last element
+becomes the first one.| **\** |reverse rotate b - shift down all elements of stack b by 1. The last element
+becomes the first one.|
 
-rrr = 1.do_rra_rrb twice with different stacks;
+[rrr] = 1.(do_rra_rrb) twice with different stacks; |rra and rrb at the same time.|

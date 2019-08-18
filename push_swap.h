@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mantis <mantis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/15 18:34:12 by mantis           ###   ########.fr       */
+/*   Updated: 2019/08/17 17:49:43 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ char	**read_commands(char **cmd);
 int	find_median(t_list *stack);
 int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
-char *just_sort(t_list *stack_a, char *str);
+char *sort_4_42(t_list *stack_a, char *str);
+char *sort_with_check(t_list *stack_a, char *str);
+int check_rot(t_list *stack_a, int len, int min);
+int check_revrot(t_list *stack_a, int len, int min);
 // char *analyse(t_list *stack_a);
 // char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 // char *bubble_a(t_list *stack_a, char *str);
