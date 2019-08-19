@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:55:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/17 18:13:47 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/18 20:47:39 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,17 @@ void	do_ra_rb(t_list *stack)
 	stack->node = first;
 }
 
-void	do_rra_rrb(t_list *stack)
+t_list	*do_rra_rrb(t_list *stack)
 {
-	int mid;
-	int midnext;
+	int last;
 	t_list *firstnode;
 
-	midnext = 0;
 	firstnode = stack;
-	if(stack->node)
-	while (stack->next != NULL)
-	{
-		mid = stack->node;
-		stack->node = midnext;
+	while (stack->next->next != NULL)
 		stack = stack->next;
-		midnext = stack->node;
-		stack->node = mid;
-		if(stack->next != NULL)
-		stack = stack->next;
-	}
+	last = stack->next->node;
+	stack->next = NULL;
 	stack = firstnode;
-	stack->node = midnext;
+	stack = add_link(stack, last);
+	return(stack);
 }

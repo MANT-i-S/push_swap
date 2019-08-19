@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/17 17:49:43 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/18 20:57:34 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	do_sa_sb(t_list *stack_a);
 t_list	*pre_pa_pb(t_list *stack_a, t_list *stack_b);
 t_list	*rm_first_node(t_list *stack);
 void	do_ra_rb(t_list *stack);
-void	do_rra_rrb(t_list *stack);
+t_list	*do_rra_rrb(t_list *stack);
 t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*read_digits(t_list *stack_a);
@@ -49,8 +49,11 @@ int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
 char *sort_4_42(t_list *stack_a, char *str);
 char *sort_with_check(t_list *stack_a, char *str);
+char *sort_with_better_check(t_list *stack_a, char *str);
 int check_rot(t_list *stack_a, int len, int min);
 int check_revrot(t_list *stack_a, int len, int min);
+int closest_rot(t_list *stack_a, int len, int min);
+int closest_revrot(t_list *stack_a, int len, int min);
 // char *analyse(t_list *stack_a);
 // char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 // char *bubble_a(t_list *stack_a, char *str);
