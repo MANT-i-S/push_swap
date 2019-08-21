@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/18 20:57:34 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:27:16 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct		s_list
 	int				node;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_table
+{
+int			len;
+int 		sorted[555];
+}				t_table;
 
 void print_list(t_list *list);
 int ft_strdigits(char *str);
@@ -50,6 +56,11 @@ int for_odd(t_list *stack, int mid, int half);
 char *sort_4_42(t_list *stack_a, char *str);
 char *sort_with_check(t_list *stack_a, char *str);
 char *sort_with_better_check(t_list *stack_a, char *str);
+char *divide_sort(t_list *stack_a, char *str);
+char *process(t_list *stack_a, t_list *stack_b, char *str, int len);
+int make_sorted(t_list *stack, t_table *tab, int len, int find);
+int spot_revrot(t_list *stack_b, int len, int spot);
+int sort_array(t_list *stack);
 int check_rot(t_list *stack_a, int len, int min);
 int check_revrot(t_list *stack_a, int len, int min);
 int closest_rot(t_list *stack_a, int len, int min);

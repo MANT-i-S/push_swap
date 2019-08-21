@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/17 11:51:22 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/21 16:33:23 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,52 @@ int node_count(t_list *stack)
         i++;
     }
         return(i);
+}
+
+int make_sorted(t_list *stack, t_table *tab, int len, int find)
+{
+    int i;
+    int j;
+    int temp;
+    int check;
+
+    i = 0;
+    j = 1;
+    len--;
+    while (stack)
+    {
+        tab->sorted[i++] = stack->node;
+        stack = stack->next;
+    }
+    i = 0;
+    check = 1;
+    while(check > 0)
+    {
+        check = 1;
+        while (j <= len)
+        {
+            if(tab->sorted[i] > tab->sorted[j])
+            {
+                temp = tab->sorted[i];
+                tab->sorted[i] = tab->sorted[j];
+                tab->sorted[j] = temp;
+                check = 2;
+            }
+            i++;
+            j++;
+        }
+        i = 0;
+        j = 1;
+        if (check == 1)
+        check = 0;
+    }
+    return(0);
+}
+
+int check_spot(t_table *tab, int find)
+{
+    int i;
+
+    i = 0;
+    while (i)
 }
