@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 16:41:05 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/21 20:50:32 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/21 21:38:45 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char *process(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
         spot_a = check_spot(tab, stack_a->node);
         spot_b = check_spot(tab, stack_b->node);
         rev_revrot = spot_rot(stack_b, tab, spot_a) - spot_revrot(stack_b, tab, spot_a);
-        if (spot_b - 1 == spot_a)
+        if (spot_b == spot_a - 1)
         {
             str = ft_strjoin(str, "pb\n");
             stack_a = pre_pa_pb(stack_b, stack_a);
@@ -71,16 +71,37 @@ char *process(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
             str = ft_strjoin(str, "rrb\n");
             stack_b = do_rra_rrb(stack_b);
 		}
-        else if (rev_revrot >= 0) 
+        else if (rev_revrot > 0) 
         {
 			str = ft_strjoin(str, "rb\n");
             do_ra_rb(stack_b);
         }
-        else 
+        else if (rev_revrot == 0)
         {
           	str = ft_strjoin(str, "ra\n");
             do_ra_rb(stack_a);
         }
+    }
+    str = final_rot(stack_a, tab, str);
+    return(str);
+}
+
+char *final_rot(t_list *stack_a, t_table *tab, char *str)
+{
+    int spot;
+
+    spot = 0;
+    while (spot != 1)
+    {
+        spot = check_spot(tab, stack_a->node);
+        if(spot == 1)
+        {
+        if(!correct_order(stack_a))//remove
+	        error("KO");//remove
+        return(str);
+        }
+        str = ft_strjoin(str, "ra\n");
+        do_ra_rb(stack_a);
     }
     return(str);
 }

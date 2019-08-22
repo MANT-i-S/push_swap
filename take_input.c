@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/06 19:31:31 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/21 20:41:34 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/21 21:31:56 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int main(int ac, char **av)
 	if(!correct_order(stack_a))
 	str = divide_sort(stack_a, str);
 	printf("%s", str); //remove;
-	if(!correct_order(stack_a))
-	error("KO");
-	error("OK");
+	// if(!correct_order(stack_a))
+	// error("KO");
+	// error("OK");
 	return(0);
 }
