@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/21 16:27:16 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/21 19:54:00 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ char *sort_4_42(t_list *stack_a, char *str);
 char *sort_with_check(t_list *stack_a, char *str);
 char *sort_with_better_check(t_list *stack_a, char *str);
 char *divide_sort(t_list *stack_a, char *str);
-char *process(t_list *stack_a, t_list *stack_b, char *str, int len);
-int make_sorted(t_list *stack, t_table *tab, int len, int find);
-int spot_revrot(t_list *stack_b, int len, int spot);
-int sort_array(t_list *stack);
+char *process(t_list *stack_a, t_list *stack_b, t_table *table, char *str);
+void make_sorted(t_list *stack, t_table *tab, int len);
+int spot_rot(t_list *stack_b, t_table *tab, int spot);
+int spot_revrot(t_list *stack_b, t_table *tab, int spot);
+int check_spot(t_table *tab, int find);
+//int sort_array(t_list *stack);
 int check_rot(t_list *stack_a, int len, int min);
 int check_revrot(t_list *stack_a, int len, int min);
 int closest_rot(t_list *stack_a, int len, int min);
