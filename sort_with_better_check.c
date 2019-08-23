@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/18 20:56:14 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/20 16:35:09 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/22 21:00:36 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ char *sort_with_better_check(t_list *stack_a, char *str)
         }
     }
 	str = merge(stack_a, stack_b, str);
+    printf("%s", str); //remove;
+    if(!correct_order(stack_a))//remove;
+	error("KO");//remove;
+	error("OK");//remove;
 	return(str);
 }
 

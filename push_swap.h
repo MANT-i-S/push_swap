@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/21 21:15:48 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/22 21:03:19 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ int check_rot(t_list *stack_a, int len, int min);
 int check_revrot(t_list *stack_a, int len, int min);
 int closest_rot(t_list *stack_a, int len, int min);
 int closest_revrot(t_list *stack_a, int len, int min);
+char *better_sort(t_list *stack_a, char *str);
+int better_rev(t_list *stack_a, t_table *tab, int i);
+int better_revrot(t_list *stack_a, t_table *tab, int i);
 // char *analyse(t_list *stack_a);
 // char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 // char *bubble_a(t_list *stack_a, char *str);
