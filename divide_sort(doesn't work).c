@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   divide_sort.c                                      :+:      :+:    :+:   */
+/*   divide_sort(doesn't work).c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 16:41:05 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/21 21:38:45 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/22 17:54:15 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,21 @@ char *divide_sort(t_list *stack_a, char *str)
     while(count)
     {
         spot = check_spot(tab, stack_a->node);
-        if(spot % 2 && spot <= tab->len)
+        if(spot % 2 && tab->len % 2)
         {
-            if (spot == tab->len)
-            {
-                str = ft_strjoin(str, "ra\n");
-                do_ra_rb(stack_a);
-            }
             str = ft_strjoin(str, "pb\n");
             stack_b = pre_pa_pb(stack_a, stack_b);
             stack_a = rm_first_node(stack_a);
             count--;
         }
-        else 
+        else if(spot % 2 == 0 && tab->len % 2 == 0)
+        {
+            str = ft_strjoin(str, "pb\n");
+            stack_b = pre_pa_pb(stack_a, stack_b);
+            stack_a = rm_first_node(stack_a);
+            count--;
+        }
+        else
         {
             str = ft_strjoin(str, "ra\n");
             do_ra_rb(stack_a);
@@ -57,29 +59,36 @@ char *process(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 
     while(stack_b)
     {
+        rev_revrot = 555;
         spot_a = check_spot(tab, stack_a->node);
         spot_b = check_spot(tab, stack_b->node);
+        if (spot_rot(stack_b, tab, spot_a) >= 0 && spot_revrot(stack_b, tab, spot_a) >= 0)
         rev_revrot = spot_rot(stack_b, tab, spot_a) - spot_revrot(stack_b, tab, spot_a);
-        if (spot_b == spot_a - 1)
+        if (spot_b == spot_a - 1 || (spot_b == tab->len && spot_a == 1))
         {
             str = ft_strjoin(str, "pb\n");
             stack_a = pre_pa_pb(stack_b, stack_a);
             stack_b = rm_first_node(stack_b);
         }
-        else if (rev_revrot < 0)
+        else if (spot_a != 1 && spot_a != tab->len && stack_a->node > stack_a->next->node)
+        {
+            str = ft_strjoin(str, "sa\n");
+            do_sa_sb(stack_a);
+        }
+        else if (rev_revrot > 0 && rev_revrot != 555)
 		{
             str = ft_strjoin(str, "rrb\n");
             stack_b = do_rra_rrb(stack_b);
 		}
-        else if (rev_revrot > 0) 
+        else if (rev_revrot <= 0)
         {
 			str = ft_strjoin(str, "rb\n");
             do_ra_rb(stack_b);
         }
-        else if (rev_revrot == 0)
+        else if (rev_revrot == 555)
         {
           	str = ft_strjoin(str, "ra\n");
-            do_ra_rb(stack_a);
+            stack_a = do_rra_rrb(stack_a);
         }
     }
     str = final_rot(stack_a, tab, str);
@@ -113,13 +122,15 @@ int spot_rot(t_list *stack_b, t_table *tab, int spot)
 
     rot = 0;
     find = 555;
-    while(stack_b && find != spot - 1)
+    while(stack_b && (find != spot - 1 || (spot != 1 && find != tab->len)))
     {
         find = check_spot(tab, stack_b->node);
         stack_b = stack_b->next;
         rot++;
     }
+    if(find == spot - 1 || (spot == 1 && find == tab->len))
     return(rot);
+    return(-1);
 }
 
 int spot_revrot(t_list *stack_b, t_table *tab, int spot)
@@ -141,11 +152,15 @@ int spot_revrot(t_list *stack_b, t_table *tab, int spot)
     }
     stack_b = begin;
     i--;
-    while(i >= 0 && spot != find -1)
+    while(i >= 0 && find - 1 != spot)
     {
-        find = check_spot(tab, stack_b->node);
+        find = check_spot(tab, array[i]);
         i--;
         revrot++;
+        if (find == 6 && spot == 1)
+            return(revrot);
     }
+    if(find == spot - 1 || (spot == 1 && find == tab->len))
     return(revrot);
+    return(-1);
 }
