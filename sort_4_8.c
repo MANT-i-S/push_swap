@@ -1,54 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_4_42.c                                        :+:      :+:    :+:   */
+/*   sort_4_8.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:24:30 by mantis            #+#    #+#             */
-/*   Updated: 2019/08/22 21:01:00 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/23 18:10:41 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *sort_4_42(t_list *stack_a, char *str)
+char *sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 {
-	int len;
-	int less;
-	int min;
-	t_list *stack_b;
-	t_list *begin;
+    int spot;
+    int rev_revrot;
+    int min;
 
-	stack_b = NULL;
-	len = node_count(stack_a);
-    while(len != 1)
+    min = 1;
+    spot = 0;
+    while(stack_a && min < 3)
     {
-		begin = stack_a;
-        less = 1;
-        min = stack_a->node;
-        while(stack_a && less != len)
+        spot = check_spot(tab, stack_a->node);
+        rev_revrot = better_rev(stack_a, tab, min) - better_revrot(stack_a, tab, min);
+        if (spot == min && min < 3)
         {
-            if (min < stack_a->node)
-            less++;
-			stack_a = stack_a->next;
-        }
-		stack_a = begin;
-		if (less == len)
-		{
-			str = ft_strjoin(str, "pb\n");
+            str = ft_strjoin(str, "pb\n");
             stack_b = pre_pa_pb(stack_a, stack_b);
             stack_a = rm_first_node(stack_a);
-			len--;
-		}
-		else 
+			min++;
+        }
+        else if (rev_revrot > 0)
 		{
+            str = ft_strjoin(str, "rra\n");
+            stack_a = do_rra_rrb(stack_a);
+		}
+        else if (rev_revrot <= 0)
+        {
 			str = ft_strjoin(str, "ra\n");
             do_ra_rb(stack_a);
-		}
+        }
     }
-	str = merge(stack_a, stack_b, str);
-	return(str);
+    str = sort_1_3(stack_a, tab, str);
+    str = merge(stack_a, stack_b, str);
+    return(str);
 }
 
 char *merge(t_list *stack_a, t_list *stack_b, char *str)
@@ -63,6 +59,9 @@ char *merge(t_list *stack_a, t_list *stack_b, char *str)
         stack_b = rm_first_node(stack_b);
         len--;
     }
-    //print_list(stack_a); //remove;
+    printf("%s", str); //remove;
+    if(!correct_order(stack_a))//remove;
+	error("KO");//remove;
+	error("OK");//remove;
     return(str);
 }

@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/22 21:03:19 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/23 17:12:58 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,11 @@ char	**read_commands(char **cmd);
 int	find_median(t_list *stack);
 int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
-char *sort_4_42(t_list *stack_a, char *str);
+char *sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
 char *sort_with_check(t_list *stack_a, char *str);
 char *sort_with_better_check(t_list *stack_a, char *str);
 char *divide_sort(t_list *stack_a, char *str);
 char *process(t_list *stack_a, t_list *stack_b, t_table *table, char *str);
-char *final_rot(t_list *stack_a, t_table *tab, char *str);
 void make_sorted(t_list *stack, t_table *tab, int len);
 int spot_rot(t_list *stack_b, t_table *tab, int spot);
 int spot_revrot(t_list *stack_b, t_table *tab, int spot);
@@ -69,8 +68,11 @@ int check_revrot(t_list *stack_a, int len, int min);
 int closest_rot(t_list *stack_a, int len, int min);
 int closest_revrot(t_list *stack_a, int len, int min);
 char *better_sort(t_list *stack_a, char *str);
+char *smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
 int better_rev(t_list *stack_a, t_table *tab, int i);
 int better_revrot(t_list *stack_a, t_table *tab, int i);
+char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
+char *sort_1_3(t_list *stack_a, t_table *tab, char *str);
 // char *analyse(t_list *stack_a);
 // char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 // char *bubble_a(t_list *stack_a, char *str);
