@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/23 18:10:24 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 15:17:35 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,51 +51,23 @@ int node_count(t_list *stack)
         return(i);
 }
 
-void    make_sorted(t_list *stack, t_table *tab, int len)
-{
-    int i;
-    int j;
-    int temp;
-    int check;
-
-    i = 0;
-    j = 1;
-    len--;
-    while (stack)
-    {
-        tab->sorted[i++] = stack->node;
-        stack = stack->next;
-    }
-    i = 0;
-    check = 1;
-    while(check > 0)
-    {
-        check = 1;
-        while (j <= len)
-        {
-            if(tab->sorted[i] > tab->sorted[j])
-            {
-                temp = tab->sorted[i];
-                tab->sorted[i] = tab->sorted[j];
-                tab->sorted[j] = temp;
-                check = 2;
-            }
-            i++;
-            j++;
-        }
-        i = 0;
-        j = 1;
-        if (check == 1)
-        check = 0;
-    }
-}
-
 int check_spot(t_table *tab, int node)
 {
     int i;
 
     i = 0;
     while (tab->sorted[i] != node)
+    i++;
+    i++;
+    return(i);
+}
+
+int check_minispot(t_table *tab, int node)
+{
+    int i;
+
+    i = 0;
+    while (tab->minisorted[i] != node)
     i++;
     i++;
     return(i);

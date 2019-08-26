@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:50:56 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/17 11:52:12 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 16:54:58 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 char	**read_commands(char **cmd)
 {
 	int j;
-	char buff[22];
 
 	j = 0;
-	while(read(0, buff, 22))
-		cmd = ft_strsplit(buff, ' ');
+	while(get_next_line(0, cmd))
 	while (cmd[j] != NULL)
 	{
 		if(cmd_check(cmd[j], "sa") && cmd_check(cmd[j], "sb") && cmd_check(cmd[j], "ss")

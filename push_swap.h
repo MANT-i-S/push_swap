@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/23 17:12:58 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 16:10:32 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
+# include "get_next_line.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/uio.h>
@@ -29,6 +30,7 @@ typedef struct		s_list
 typedef struct	s_table
 {
 int			len;
+int			minisorted[11];
 int 		sorted[555];
 }				t_table;
 
@@ -73,10 +75,12 @@ int better_rev(t_list *stack_a, t_table *tab, int i);
 int better_revrot(t_list *stack_a, t_table *tab, int i);
 char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
 char *sort_1_3(t_list *stack_a, t_table *tab, char *str);
+void    make_minisorted(t_list *stack, t_table *tab, int len);
+int check_minispot(t_table *tab, int node);
 // char *analyse(t_list *stack_a);
 // char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
 // char *bubble_a(t_list *stack_a, char *str);
 // char *bubble_b(t_list *stack_b, char *str);
-char *merge(t_list *stack_a, t_list *stack_b, char *str);
+char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
 
 #endif

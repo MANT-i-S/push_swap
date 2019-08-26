@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:24:30 by mantis            #+#    #+#             */
-/*   Updated: 2019/08/23 18:10:41 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 16:55:01 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ char *sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
         }
     }
     str = sort_1_3(stack_a, tab, str);
-    str = merge(stack_a, stack_b, str);
+    str = merge_stacks(stack_a, stack_b, str);
     return(str);
 }
 
-char *merge(t_list *stack_a, t_list *stack_b, char *str)
+char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str)
 {
     int len;
 

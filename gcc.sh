@@ -1,1 +1,1 @@
-gcc -Wall -Werror -Wextra read_digits.c read_commands.c take_input.c push_swap.c sort_1_3.c sort_4_8.c better_sort.c operations.c tools.c tools_2.c ./libft/libft.a -g
+gcc -Wall -Werror -Wextra checker.c read_digits.c read_commands.c push_swap.c get_next_line.c sort_1_3.c sort_4_8.c better_sort.c operations.c tools.c tools_2.c tools_3.c ./libft/libft.a -g

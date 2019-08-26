@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/23 17:17:23 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 16:07:06 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ char *better_sort(t_list *stack_a, char *str)
     make_sorted(stack_a, tab, tab->len);
     if(tab->len <= 3)
     str = sort_1_3(stack_a, tab, str);
-    if(tab->len > 3 && tab->len < 7)
+    if(tab->len > 3 && tab->len <= 5)
     str = sort_4_8(stack_a, stack_b, tab, str);
-    if(tab->len > 6)
+    if(tab->len > 5)
     str = smart_split(stack_a, stack_b, tab, str);
 	return(str);
 }
@@ -141,7 +141,7 @@ char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
         spot = check_spot(tab, stack_b->node);
         if(spot == tab->len)
         {
-        str = merge(stack_a, stack_b, str);
+        str = merge_stacks(stack_a, stack_b, str);
         return(str);
         }
         str = ft_strjoin(str, "ra\n");

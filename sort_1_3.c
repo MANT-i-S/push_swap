@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/23 16:43:20 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/23 18:10:28 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/26 15:32:44 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char *sort_1_3(t_list *stack_a, t_table *tab, char *str)
     int spot;
 
     spot = 0;
-    make_sorted(stack_a, tab, tab->len);
+    make_minisorted(stack_a, tab, node_count(stack_a));
     while(!correct_order(stack_a))
     {
-        spot = check_spot(tab, stack_a->node);
+        spot = check_minispot(tab, stack_a->node);
         if(spot == 3)
         {
             str = ft_strjoin(str, "ra\n");
@@ -31,7 +31,7 @@ char *sort_1_3(t_list *stack_a, t_table *tab, char *str)
             str = ft_strjoin(str, "sa\n");
             do_sa_sb(stack_a);
         }
-        else if(spot == 1 && check_spot(tab, stack_a->next->node != 2))
+        else if(spot == 1 && check_minispot(tab, stack_a->next->node != 2))
         {
             str = ft_strjoin(str, "sa\n");
             do_sa_sb(stack_a);
