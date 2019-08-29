@@ -6,16 +6,16 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 15:14:27 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 16:43:55 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char *better_sort(t_list *stack_a, char *str)
+char	*better_sort(t_list *stack_a, char *str)
 {
-	t_list *stack_b;
-	t_table *tab;
+	t_list	*stack_b;
+	t_table	*tab;
 
 	tab = (t_table *)malloc(sizeof(t_table));
 	stack_b = NULL;
@@ -26,72 +26,73 @@ char *better_sort(t_list *stack_a, char *str)
 	if (tab->len > 3 && tab->len <= 5)
 		str = sort_4_8(stack_a, stack_b, tab, str);
 	if (tab->len > 5)
+	{
+		tab->min = 1;
+		tab->check = 0;
+		tab->spot = 0;
+		tab->max = tab->len;
 		str = smart_split(stack_a, stack_b, tab, str);
+	}
 	return (str);
 }
 
-char *smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
+char	*smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 {
-	int spot;
-	int rev_revrot;
-	int min;
-	int max;
-	int check;
-
-	min = 1;
-	check = 0;
-	spot = 0;
-	max = tab->len;
-	while (stack_a && min != tab->len)
+	while (stack_a && (tab->min != tab->len || tab->max == tab->min))
 	{
-		spot = check_spot(tab, stack_a->node);
-		rev_revrot = better_rev(stack_a, tab, min) - better_revrot(stack_a, tab, min);
-		if (spot == min && min != max)
+		tab->spot = check_spot(tab, stack_a->node);
+		tab->rev_revrot = rev(stack_a, tab, tab->min) -
+		revrot(stack_a, tab, tab->min);
+		if (tab->spot == tab->min && tab->min != tab->max)
 		{
 			str = ft_strjoin(str, "pb\n");
 			stack_b = pre_pa_pb(stack_a, stack_b);
 			stack_a = rm_first_node(stack_a);
-			if (check)
+			if (tab->check)
 			{
 				str = ft_strjoin(str, "sb\n");
 				do_sa_sb(stack_b);
-				min++;
-				check = 0;
+				tab->min++;
+				tab->check = 0;
 			}
-			min++;
+			tab->min++;
 		}
-		else if (spot == min + 1 && !check)
-		{
-			str = ft_strjoin(str, "pb\n");
-			stack_b = pre_pa_pb(stack_a, stack_b);
-			stack_a = rm_first_node(stack_a);
-			check = 1;
-		}
-		else if (spot == max)
-		{
-			str = ft_strjoin(str, "pb\n");
-			stack_b = pre_pa_pb(stack_a, stack_b);
-			stack_a = rm_first_node(stack_a);
-			str = ft_strjoin(str, "rb\n");
-			do_ra_rb(stack_b);
-			max--;
-		}
-		else if (rev_revrot > 0)
-		{
-			str = ft_strjoin(str, "rra\n");
-			stack_a = do_rra_rrb(stack_a);
-		}
-		else if (rev_revrot <= 0)
-		{
-			str = ft_strjoin(str, "ra\n");
-			do_ra_rb(stack_a);
-		}
+		else
+			midsplit(stack_a, stack_b, tab, str);
 	}
-	str = before_merging(stack_a, stack_b, tab, str);
+	str = pre_merg(stack_a, stack_b, tab, str);
 	return (str);
 }
 
-int better_rev(t_list *stack_a, t_table *tab, int min)
+void	midsplit(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
+{
+	if (tab->spot == tab->min + 1 && !tab->check)
+	{
+		str = ft_strjoin(str, "pb\n");
+		stack_b = pre_pa_pb(stack_a, stack_b);
+		stack_a = rm_first_node(stack_a);
+		tab->check = 1;
+	}
+	else if (tab->spot == tab->max)
+	{
+		str = ft_strjoin(str, "pb\n");
+		stack_b = pre_pa_pb(stack_a, stack_b);
+		stack_a = rm_first_node(stack_a);
+		str = ft_strjoin(str, "rb\n");
+		do_ra_rb(stack_b);
+		tab->max--;
+	}
+	else if (tab->rev_revrot > 0)
+	{
+		str = ft_strjoin(str, "rra\n");
+		stack_a = do_rra_rrb(stack_a);
+	}
+	else if (tab->rev_revrot <= 0)
+		str = write_ra(stack_a, str);
+	smart_split(stack_a, stack_b, tab, str);
+}
+
+int		rev(t_list *stack_a, t_table *tab, int min)
 {
 	int rot;
 	int spot;
@@ -107,7 +108,7 @@ int better_rev(t_list *stack_a, t_table *tab, int min)
 	return (rot);
 }
 
-int better_revrot(t_list *stack_a, t_table *tab, int min)
+int		revrot(t_list *stack_a, t_table *tab, int min)
 {
 	int revrot;
 	int spot;
@@ -130,23 +131,4 @@ int better_revrot(t_list *stack_a, t_table *tab, int min)
 		revrot++;
 	}
 	return (revrot);
-}
-
-char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
-{
-	int spot;
-
-	spot = 0;
-	while (spot != tab->len)
-	{
-		spot = check_spot(tab, stack_b->node);
-		if (spot == tab->len)
-		{
-			str = merge_stacks(stack_a, stack_b, str);
-			return (str);
-		}
-		str = ft_strjoin(str, "ra\n");
-		do_ra_rb(stack_b);
-	}
-	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 15:13:11 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 16:43:41 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ int closest_rot(t_list *stack_a, int len, int min);
 int closest_revrot(t_list *stack_a, int len, int min);
 char *better_sort(t_list *stack_a, char *str);
 char *smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
-int better_rev(t_list *stack_a, t_table *tab, int i);
-int better_revrot(t_list *stack_a, t_table *tab, int i);
-char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
+int rev(t_list *stack_a, t_table *tab, int i);
+int revrot(t_list *stack_a, t_table *tab, int i);
+char *pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
 char *sort_1_3(t_list *stack_a, t_table *tab, char *str);
 void make_minisorted(t_list *stack, t_table *tab, int len);
 int check_minispot(t_table *tab, int node);
@@ -85,10 +85,7 @@ char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
 void ft_help(void);
 void	ft_sorting(t_table *tab, int len, int temp, int check);
 void	ft_minisorting(t_table *tab, int len, int temp, int check);
-// t_list	*write_pa_pb(t_list *stack_a, t_list *stack_b, char *str);
-// void	write_sa_sb(t_list *stack, char *str);
-// void	write_rb(t_list *stack, char *str);
-// t_list	*write_rra_rrb(t_list *stack, char *str);
-// void	write_ra(t_list *stack, char *str);
+void midsplit(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
+char	*write_ra(t_list *stack, char *str);
 
 #endif
