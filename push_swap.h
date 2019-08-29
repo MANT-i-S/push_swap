@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 20:32:11 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/28 22:26:51 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ void make_sorted(t_list *stack, t_table *tab, int len);
 int spot_rot(t_list *stack_b, t_table *tab, int spot);
 int spot_revrot(t_list *stack_b, t_table *tab, int spot);
 int check_spot(t_table *tab, int find);
-//int sort_array(t_list *stack);
 int check_rot(t_list *stack_a, int len, int min);
 int check_revrot(t_list *stack_a, int len, int min);
 int closest_rot(t_list *stack_a, int len, int min);
@@ -81,5 +80,9 @@ char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
 void ft_help(void);
 void	ft_sorting(t_table *tab, int len, int temp, int check);
 void	ft_minisorting(t_table *tab, int len, int temp, int check);
+// t_list	*write_pa_pb(t_list *stack_a, t_list *stack_b, char *str);
+// void	write_sa_sb(t_list *stack, char *str);
+// void	write_ra_rb(t_list *stack, char *str);
+// t_list	*write_rra_rrb(t_list *stack, char *str);
 
 #endif
