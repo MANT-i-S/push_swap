@@ -15,7 +15,7 @@ the last one.|
 
 [rr] = 1.(do_ra_rb) twice with different stacks;|ra and rb at the same time.|
 
-[rra\rrb] = 1.(do_rra_rrb); |reverse rotate a - shift down all elements of stack a by 1. The last element
+[rra\rrb] = 1.{return stack}(do_rra_rrb); |reverse rotate a - shift down all elements of stack a by 1. The last element
 becomes the first one.| **\** |reverse rotate b - shift down all elements of stack b by 1. The last element
 becomes the first one.|
 

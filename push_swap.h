@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/26 16:10:32 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/28 17:52:11 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_list
 
 typedef struct	s_table
 {
+int			debug;
 int			len;
 int			minisorted[11];
 int 		sorted[555];
@@ -41,17 +42,14 @@ int error(char *msg);
 int node_count(t_list *stack);
 int	repeat_check(t_list *stack_a, int num);
 t_list	*add_link(t_list *list, int num);
-t_list	*push_swap(t_list *stack_a);
 int		correct_order(t_list *stack_a);
 void	do_sa_sb(t_list *stack_a);
 t_list	*pre_pa_pb(t_list *stack_a, t_list *stack_b);
 t_list	*rm_first_node(t_list *stack);
 void	do_ra_rb(t_list *stack);
 t_list	*do_rra_rrb(t_list *stack);
-t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd);
-t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd);
 t_list	*read_digits(t_list *stack_a);
-char	**read_commands(char **cmd);
+void read_commands(t_list *stack_a, char **cmd, int debug);
 int	find_median(t_list *stack);
 int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
@@ -75,12 +73,12 @@ int better_rev(t_list *stack_a, t_table *tab, int i);
 int better_revrot(t_list *stack_a, t_table *tab, int i);
 char *before_merging(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
 char *sort_1_3(t_list *stack_a, t_table *tab, char *str);
-void    make_minisorted(t_list *stack, t_table *tab, int len);
+void make_minisorted(t_list *stack, t_table *tab, int len);
 int check_minispot(t_table *tab, int node);
-// char *analyse(t_list *stack_a);
-// char *divide(t_list *stack_a, t_list *stack_b, char *str, int mid);
-// char *bubble_a(t_list *stack_a, char *str);
-// char *bubble_b(t_list *stack_b, char *str);
+void pre_dispatch(t_list *stack_a, char **cmd, int debug);
+t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd, int j);
+t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd, int j);
 char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
+void ft_help();
 
 #endif
