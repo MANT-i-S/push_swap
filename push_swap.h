@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 17:52:11 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/28 20:32:11 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include "get_next_line.h"
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/uio.h>
@@ -37,7 +36,7 @@ int 		sorted[555];
 
 void print_list(t_list *list);
 int ft_strdigits(char *str);
-int	cmd_check(const char *s1, const char *s2);
+int	cmd_c(const char *s1, const char *s2);
 int error(char *msg);
 int node_count(t_list *stack);
 int	repeat_check(t_list *stack_a, int num);
@@ -49,7 +48,7 @@ t_list	*rm_first_node(t_list *stack);
 void	do_ra_rb(t_list *stack);
 t_list	*do_rra_rrb(t_list *stack);
 t_list	*read_digits(t_list *stack_a);
-void read_commands(t_list *stack_a, char **cmd, int debug);
+void read_commands(t_list *stack_a, int debug);
 int	find_median(t_list *stack);
 int for_even(t_list *stack, int mid, int half);
 int for_odd(t_list *stack, int mid, int half);
@@ -79,6 +78,8 @@ void pre_dispatch(t_list *stack_a, char **cmd, int debug);
 t_list	*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd, int j);
 t_list	*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd, int j);
 char *merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
-void ft_help();
+void ft_help(void);
+void	ft_sorting(t_table *tab, int len, int temp, int check);
+void	ft_minisorting(t_table *tab, int len, int temp, int check);
 
 #endif

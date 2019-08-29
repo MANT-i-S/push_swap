@@ -6,60 +6,61 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:11:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/22 20:13:12 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/28 20:11:13 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_list(t_list *list)
+void	print_list(t_list *list)
 {
-	while(list != NULL)
+	while (list != NULL)
 	{
 		printf("%d\n", (list->node));
 		list = list->next;
 	}
 }
 
-int error(char *msg)
+int		error(char *msg)
 {
 	ft_putendl(msg);
-	exit (1);
+	exit(1);
 }
 
-t_list *add_link(t_list *list, int num)
+t_list	*add_link(t_list *list, int num)
 {
 	t_list *tmp;
 
 	tmp = malloc(sizeof(t_list));
-	if(tmp)
+	if (tmp)
 	{
 		tmp->node = num;
 		tmp->next = list;
 	}
-	return(tmp);
+	return (tmp);
 }
 
-int	repeat_check(t_list *stack_a, int num)
+int		repeat_check(t_list *stack_a, int num)
 {
-	while(stack_a->next != NULL)
+	while (stack_a->next != NULL)
 	{
 		stack_a = stack_a->next;
 		if (stack_a->node == num)
-		return(1);
+			return (1);
 	}
-	return(0);
+	return (0);
 }
 
-int	correct_order(t_list *stack_a)
+int		correct_order(t_list *stack_a)
 {
 	int tmp;
-	while(stack_a->next != NULL)
+
+	while (stack_a->next != NULL)
 	{
 		tmp = stack_a->node;
 		stack_a = stack_a->next;
 		if (stack_a->node < tmp)
-		return(0);
+			return (0);
 	}
-	return(1);
+	return (1);
 }

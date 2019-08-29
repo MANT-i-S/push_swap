@@ -6,27 +6,27 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/26 15:17:35 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/28 20:16:25 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_strdigits(char *str)
+int	ft_strdigits(char *str)
 {
-    int i;
+	int i;
 
-    i = 0;
-    if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ')
-    error("Error : Please enter some digits");
-    while(str[i] != '\0' && str[i] > 47 && str[i] < 58)
-    i++;
-    if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
-    error("Error : Please enter digits only");
-    return(0);
+	i = 0;
+	if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ')
+		error("Error : Please enter some digits");
+	while (str[i] != '\0' && str[i] > 47 && str[i] < 58)
+		i++;
+	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
+		error("Error : Please enter digits only");
+	return (0);
 }
 
-int	cmd_check(const char *s1, const char *s2)
+int	cmd_c(const char *s1, const char *s2)
 {
 	while (*s1 == *s2 && *s1 != '\0' && *s2 != '\0')
 	{
@@ -38,37 +38,37 @@ int	cmd_check(const char *s1, const char *s2)
 	return (0);
 }
 
-int node_count(t_list *stack)
+int	node_count(t_list *stack)
 {
-    int i;
+	int i;
 
-    i = 1;
-    while(stack->next != NULL)
-    {
-        stack = stack->next;
-        i++;
-    }
-        return(i);
+	i = 1;
+	while (stack->next != NULL)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }
 
-int check_spot(t_table *tab, int node)
+int	check_spot(t_table *tab, int node)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (tab->sorted[i] != node)
-    i++;
-    i++;
-    return(i);
+	i = 0;
+	while (tab->sorted[i] != node)
+		i++;
+	i++;
+	return (i);
 }
 
-int check_minispot(t_table *tab, int node)
+int	check_minispot(t_table *tab, int node)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (tab->minisorted[i] != node)
-    i++;
-    i++;
-    return(i);
+	i = 0;
+	while (tab->minisorted[i] != node)
+		i++;
+	i++;
+	return (i);
 }
