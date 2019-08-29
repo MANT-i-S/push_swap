@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 22:26:36 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:14:27 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,14 @@ char *smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 	int check;
 
 	min = 1;
+	check = 0;
 	spot = 0;
 	max = tab->len;
 	while (stack_a && min != tab->len)
 	{
 		spot = check_spot(tab, stack_a->node);
 		rev_revrot = better_rev(stack_a, tab, min) - better_revrot(stack_a, tab, min);
-		if (spot == min)
+		if (spot == min && min != max)
 		{
 			str = ft_strjoin(str, "pb\n");
 			stack_b = pre_pa_pb(stack_a, stack_b);

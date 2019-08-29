@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 22:26:51 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 15:13:11 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ typedef struct		s_list
 
 typedef struct	s_table
 {
+int 		min;
+int			max;
+int			check;
+int			rev_revrot;
+int			spot;
 int			debug;
 int			len;
 int			minisorted[11];
@@ -82,7 +87,8 @@ void	ft_sorting(t_table *tab, int len, int temp, int check);
 void	ft_minisorting(t_table *tab, int len, int temp, int check);
 // t_list	*write_pa_pb(t_list *stack_a, t_list *stack_b, char *str);
 // void	write_sa_sb(t_list *stack, char *str);
-// void	write_ra_rb(t_list *stack, char *str);
+// void	write_rb(t_list *stack, char *str);
 // t_list	*write_rra_rrb(t_list *stack, char *str);
+// void	write_ra(t_list *stack, char *str);
 
 #endif

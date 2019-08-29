@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 20:48:38 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 22:26:53 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 14:51:38 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,15 @@ void	write_sa_sb(t_list *stack, char *str)
 	do_sa_sb(stack);
 }
 
-void	write_ra_rb(t_list *stack, char *str)
+void	write_rb(t_list *stack, char *str)
 {
 	str = ft_strjoin(str, "rb\n");
+	do_ra_rb(stack);
+}
+
+void	write_ra(t_list *stack, char *str)
+{
+	str = ft_strjoin(str, "ra\n");
 	do_ra_rb(stack);
 }
 
