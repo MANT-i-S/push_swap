@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:50:56 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 20:03:34 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:52:56 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,7 @@ void	read_commands(t_list *stack_a, int debug)
 		j++;
 	}
 	pre_dispatch(stack_a, cmd, debug);
+	if (!correct_order(stack_a))
+		error("KO");
+	error("OK");
 }

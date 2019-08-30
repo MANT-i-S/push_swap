@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:54:39 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 16:47:43 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 18:02:07 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int	main(int ac, char **av)
 	if (!correct_order(stack_a))
 		str = better_sort(stack_a, str);
 	ft_putstr(str);
+	ft_memdel(&str);
 	return (0);
 }

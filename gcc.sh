@@ -1,1 +1,0 @@
-gcc -Wall -Werror -Wextra push_swap.c dispatch.c writers.c read_commands.c sort_1_3.c sort_4_8.c better_sort.c operations.c tools.c tools_2.c tools_3.c ./libft/libft.a -g

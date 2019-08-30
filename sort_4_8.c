@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:24:30 by mantis            #+#    #+#             */
-/*   Updated: 2019/08/29 16:46:44 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:52:08 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,12 @@ char	*merge_stacks(t_list *stack_a, t_list *stack_b, char *str)
 		stack_b = rm_first_node(stack_b);
 		len--;
 	}
+	return (str);
+}
+
+char	*write_ra(t_list *stack, char *str)
+{
+	str = ft_strjoin(str, "ra\n");
+	do_ra_rb(stack);
 	return (str);
 }
