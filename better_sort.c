@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 16:43:55 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/29 21:48:23 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*better_sort(t_list *stack_a, char *str)
 		tab->max = tab->len;
 		str = smart_split(stack_a, stack_b, tab, str);
 	}
+	free(tab);
 	return (str);
 }
 
