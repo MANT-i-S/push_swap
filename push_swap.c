@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:54:39 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 21:50:44 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/30 13:49:45 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
-	char	*str;
 	int		num;
 	int		j;
 
 	num = 0;
-	str = ft_strnew(0);
 	stack_a = NULL;
 	j = ac - 1;
 	while (j > 0)
@@ -32,8 +30,6 @@ int	main(int ac, char **av)
 		j--;
 	}
 	if (!correct_order(stack_a))
-		str = better_sort(stack_a, str);
-	ft_putstr(str);
-	ft_strdel(&str);
+	better_sort(stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 21:48:38 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/30 14:14:03 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 
 typedef struct		s_table
 {
+	int				flag;
 	int				min;
 	int				max;
 	int				check;
@@ -54,25 +55,25 @@ void				do_ra_rb(t_list *stack);
 t_list				*do_rra_rrb(t_list *stack);
 t_list				*read_digits(t_list *stack_a);
 void				read_commands(t_list *stack_a, int debug);
-char				*sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
+void				sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab);
 void				make_sorted(t_list *stack, t_table *tab, int len);
 int					check_spot(t_table *tab, int find);
-char				*better_sort(t_list *stack_a, char *str);
-char				*smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
-void				midsplit(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
+void				better_sort(t_list *stack_a);
+int					smart_split(t_list *stack_a, t_list *stack_b, t_table *tab);
+int					midsplit(t_list *stack_a, t_list *stack_b, t_table *tab);
 int					rev(t_list *stack_a, t_table *tab, int i);
 int					revrot(t_list *stack_a, t_table *tab, int i);
-char				*pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab, char *str);
-char				*sort_1_3(t_list *stack_a, t_table *tab, char *str);
+int					pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab);
+void				sort_1_3(t_list *stack_a, t_table *tab);
 void				make_minisorted(t_list *stack, t_table *tab, int len);
 int					check_minispot(t_table *tab, int node);
 void				pre_dispatch(t_list *stack_a, char **cmd, int debug);
 t_list				*dispatch_a(t_list *stack_a, t_list *stack_b, char **cmd, int j);
 t_list				*dispatch_b(t_list *stack_a, t_list *stack_b, char **cmd, int j);
-char				*merge_stacks(t_list *stack_a, t_list *stack_b, char *str);
+void				merge_stacks(t_list *stack_a, t_list *stack_b);
 void				ft_help(void);
 void				ft_sorting(t_table *tab, int len, int temp, int check);
 void				ft_minisorting(t_table *tab, int len, int temp, int check);
-char				*write_ra(t_list *stack, char *str);
+void				write_ra(t_list *stack);
 
 #endif

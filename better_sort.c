@@ -6,13 +6,13 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/29 21:48:23 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/08/30 14:14:56 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*better_sort(t_list *stack_a, char *str)
+void	better_sort(t_list *stack_a)
 {
 	t_list	*stack_b;
 	t_table	*tab;
@@ -22,22 +22,21 @@ char	*better_sort(t_list *stack_a, char *str)
 	tab->len = node_count(stack_a);
 	make_sorted(stack_a, tab, tab->len);
 	if (tab->len <= 3)
-		str = sort_1_3(stack_a, tab, str);
+		sort_1_3(stack_a, tab);
 	if (tab->len > 3 && tab->len <= 5)
-		str = sort_4_8(stack_a, stack_b, tab, str);
+		sort_4_8(stack_a, stack_b, tab);
 	if (tab->len > 5)
 	{
 		tab->min = 1;
 		tab->check = 0;
 		tab->spot = 0;
 		tab->max = tab->len;
-		str = smart_split(stack_a, stack_b, tab, str);
+		smart_split(stack_a, stack_b, tab);
 	}
 	free(tab);
-	return (str);
 }
 
-char	*smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
+int	smart_split(t_list *stack_a, t_list *stack_b, t_table *tab)
 {
 	while (stack_a && (tab->min != tab->len || tab->max == tab->min))
 	{
@@ -46,12 +45,12 @@ char	*smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 		revrot(stack_a, tab, tab->min);
 		if (tab->spot == tab->min && tab->min != tab->max)
 		{
-			str = ft_strjoin(str, "pb\n");
+			ft_putstr("pb\n");
 			stack_b = pre_pa_pb(stack_a, stack_b);
 			stack_a = rm_first_node(stack_a);
 			if (tab->check)
 			{
-				str = ft_strjoin(str, "sb\n");
+				ft_putstr("sb\n");
 				do_sa_sb(stack_b);
 				tab->min++;
 				tab->check = 0;
@@ -59,38 +58,41 @@ char	*smart_split(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
 			tab->min++;
 		}
 		else
-			midsplit(stack_a, stack_b, tab, str);
+			midsplit(stack_a, stack_b, tab);
+		if (tab->flag)
+		return(0);
 	}
-	str = pre_merg(stack_a, stack_b, tab, str);
-	return (str);
+	tab->flag = pre_merg(stack_a, stack_b, tab);
+	return(0);
 }
 
-void	midsplit(t_list *stack_a, t_list *stack_b, t_table *tab, char *str)
+int	midsplit(t_list *stack_a, t_list *stack_b, t_table *tab)
 {
-	if (tab->spot == tab->min + 1 && !tab->check)
+	if (tab->spot == tab->min + 1 && !tab->check && stack_a)
 	{
-		str = ft_strjoin(str, "pb\n");
+		ft_putstr("pb\n");
 		stack_b = pre_pa_pb(stack_a, stack_b);
 		stack_a = rm_first_node(stack_a);
 		tab->check = 1;
 	}
-	else if (tab->spot == tab->max)
+	else if (tab->spot == tab->max && stack_a)
 	{
-		str = ft_strjoin(str, "pb\n");
+		ft_putstr("pb\n");
 		stack_b = pre_pa_pb(stack_a, stack_b);
 		stack_a = rm_first_node(stack_a);
-		str = ft_strjoin(str, "rb\n");
+		ft_putstr("rb\n");
 		do_ra_rb(stack_b);
 		tab->max--;
 	}
-	else if (tab->rev_revrot > 0)
+	else if (tab->rev_revrot > 0 && stack_a)
 	{
-		str = ft_strjoin(str, "rra\n");
+		ft_putstr("rra\n");
 		stack_a = do_rra_rrb(stack_a);
 	}
-	else if (tab->rev_revrot <= 0)
-		str = write_ra(stack_a, str);
-	smart_split(stack_a, stack_b, tab, str);
+	else if (tab->rev_revrot <= 0 && stack_a)
+		write_ra(stack_a);
+	smart_split(stack_a, stack_b, tab);
+	return(0);
 }
 
 int		rev(t_list *stack_a, t_table *tab, int min)
