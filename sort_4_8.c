@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 17:24:30 by mantis            #+#    #+#             */
-/*   Updated: 2019/08/30 14:14:27 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 14:15:23 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sort_4_8(t_list *stack_a, t_list *stack_b, t_table *tab)
 	merge_stacks(stack_a, stack_b);
 }
 
-int	pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab)
+int		pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab)
 {
 	int spot;
 
@@ -51,12 +51,12 @@ int	pre_merg(t_list *stack_a, t_list *stack_b, t_table *tab)
 		if (spot == tab->len)
 		{
 			merge_stacks(stack_a, stack_b);
-			return(1);
+			return (1);
 		}
-		ft_putstr("ra\n");
+		ft_putstr("rb\n");
 		do_ra_rb(stack_b);
 	}
-	return(0);
+	return (0);
 }
 
 void	merge_stacks(t_list *stack_a, t_list *stack_b)

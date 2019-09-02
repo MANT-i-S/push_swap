@@ -6,19 +6,21 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:50:56 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/30 12:06:32 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 14:20:15 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	read_commands(t_list *stack_a, int debug)
+void	read_commands(t_list *stack_a)
 {
 	int		j;
 	char	buff[1];
 	char	*str;
 	char	**cmd;
+	t_list	*stack_b;
 
+	stack_b = NULL;
 	cmd = NULL;
 	str = ft_strnew(0);
 	j = 0;
@@ -35,8 +37,6 @@ void	read_commands(t_list *stack_a, int debug)
 			error("Error : Please use correct commands");
 		j++;
 	}
-	pre_dispatch(stack_a, cmd, debug);
-	if (!correct_order(stack_a))
-		error("KO");
-	error("OK");
+	j = -1;
+	pred(stack_a, stack_b, cmd, j);
 }

@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/30 14:14:56 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 14:13:06 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,12 @@ void	better_sort(t_list *stack_a)
 	free(tab);
 }
 
-int	smart_split(t_list *stack_a, t_list *stack_b, t_table *tab)
+int		smart_split(t_list *stack_a, t_list *stack_b, t_table *tab)
 {
 	while (stack_a && (tab->min != tab->len || tab->max == tab->min))
 	{
 		tab->spot = check_spot(tab, stack_a->node);
-		tab->rev_revrot = rev(stack_a, tab, tab->min) -
-		revrot(stack_a, tab, tab->min);
+		tab->r_r = rev(stack_a, tab, tab->min) - revrot(stack_a, tab, tab->min);
 		if (tab->spot == tab->min && tab->min != tab->max)
 		{
 			ft_putstr("pb\n");
@@ -60,13 +59,13 @@ int	smart_split(t_list *stack_a, t_list *stack_b, t_table *tab)
 		else
 			midsplit(stack_a, stack_b, tab);
 		if (tab->flag)
-		return(0);
+			return (0);
 	}
 	tab->flag = pre_merg(stack_a, stack_b, tab);
-	return(0);
+	return (0);
 }
 
-int	midsplit(t_list *stack_a, t_list *stack_b, t_table *tab)
+int		midsplit(t_list *stack_a, t_list *stack_b, t_table *tab)
 {
 	if (tab->spot == tab->min + 1 && !tab->check && stack_a)
 	{
@@ -84,15 +83,15 @@ int	midsplit(t_list *stack_a, t_list *stack_b, t_table *tab)
 		do_ra_rb(stack_b);
 		tab->max--;
 	}
-	else if (tab->rev_revrot > 0 && stack_a)
+	else if (tab->r_r > 0 && stack_a)
 	{
 		ft_putstr("rra\n");
 		stack_a = do_rra_rrb(stack_a);
 	}
-	else if (tab->rev_revrot <= 0 && stack_a)
+	else if (tab->r_r <= 0 && stack_a)
 		write_ra(stack_a);
 	smart_split(stack_a, stack_b, tab);
-	return(0);
+	return (0);
 }
 
 int		rev(t_list *stack_a, t_table *tab, int min)
