@@ -6,20 +6,11 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:11:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 12:14:09 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 17:33:00 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_list(t_list *list)
-{
-	while (list != NULL)
-	{
-		printf("%d\n", (list->node));
-		list = list->next;
-	}
-}
 
 int		error(char *msg)
 {
