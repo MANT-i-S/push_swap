@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:55:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 11:48:28 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 17:17:48 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,14 @@ t_list	*do_rra_rrb(t_list *stack)
 	t_list	*firstnode;
 
 	firstnode = stack;
-	while (stack->next->next != NULL)
-		stack = stack->next;
-	last = stack->next->node;
-	stack->next = NULL;
-	stack = firstnode;
-	stack = add_link(stack, last);
+	if (stack->next != NULL)
+	{
+		while (stack->next->next != NULL)
+			stack = stack->next;
+		last = stack->next->node;
+		stack->next = NULL;
+		stack = firstnode;
+		stack = add_link(stack, last);
+	}
 	return (stack);
 }

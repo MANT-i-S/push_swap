@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 22:00:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 14:26:16 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 17:16:00 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	pred(t_list *stack_a, t_list *stack_b, char **cmd, int j)
 			dis(stack_a, stack_b, cmd, j);
 		j++;
 	}
+	free(cmd);
 	if (!correct_order(stack_a) || stack_b)
 		error("KO");
 	error("OK");
