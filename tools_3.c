@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/26 15:13:01 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 20:36:14 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/03 15:39:04 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,5 @@ void	ft_help(void)
 	ft_putstr("|rra| rev rotate a - shift down all elements of stack a by 1\n");
 	ft_putstr("|rrb| rev rotate b - shift down all elements of stack b by 1\n");
 	ft_putstr("|rrr| running |rra| + |rrb|\n");
-	error("Try to use those commands");
+	error("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
 }

@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/08/28 20:16:25 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/03 16:34:09 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_strdigits(char *str)
 	i = 0;
 	if (str[i] == '\0' || str[i] == '\n' || str[i] == ' ')
 		error("Error : Please enter some digits");
+	if (str[i] == '-')
+		i++;
 	while (str[i] != '\0' && str[i] > 47 && str[i] < 58)
 		i++;
 	if (str[i] != '\0' && str[i] != '\n' && str[i] != ' ')
@@ -33,7 +35,7 @@ int	cmd_c(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-	if (*s1 != *s2 && *s1 != '\n' && *s1 != ' ')
+	if (*s1 != *s2 && *s1 != '\n')
 		return (1);
 	return (0);
 }

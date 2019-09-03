@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 12:30:10 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 20:31:42 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/03 16:34:31 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ void	checker(t_list *stack_a, char **digits)
 	while (j >= 0)
 	{
 		ft_strdigits(digits[j]);
+		if (ft_strlen(digits[j]) > 10)
+			error("Error : Reached integer limit, use digits closer to 0");
 		num = ft_atoi(digits[j]);
 		stack_a = add_link(stack_a, num);
 		if (repeat_check(stack_a, num))
 			error("Error : Please don't use same digits");
 		j--;
 	}
+	ft_strdel(digits);
 	ft_putstr("Please enter commands, for list use |./checker -help|\n");
 	read_commands(stack_a);
 }

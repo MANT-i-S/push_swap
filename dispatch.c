@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 22:00:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 20:27:03 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/03 16:04:07 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	read_commands(t_list *stack_a)
 	str = ft_strnew(0);
 	j = 0;
 	while (read(0, buff, 1))
-		str = ft_strjoin(str, buff);
+		str = ft_strcat(str, buff);
 	cmd = ft_strsplit(str, '\n');
 	ft_strdel(&str);
 	while (cmd[j] != NULL)
@@ -60,7 +60,7 @@ void	pred(t_list *stack_a, t_list *stack_b, char **cmd, int j)
 			dis(stack_a, stack_b, cmd, j);
 		j++;
 	}
-	free(cmd);
+	ft_strdel(cmd);
 	if (!correct_order(stack_a) || stack_b)
 		error("KO");
 	error("OK");
