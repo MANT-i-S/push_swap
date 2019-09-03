@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/07 12:40:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 14:27:14 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/02 20:15:06 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct		s_list
 
 typedef struct		s_table
 {
+	int				debug;
 	int				flag;
 	int				min;
 	int				max;
@@ -44,6 +45,7 @@ int					ft_strdigits(char *str);
 int					cmd_c(const char *s1, const char *s2);
 int					error(char *msg);
 int					node_count(t_list *stack);
+void				checker(t_list *stack_a, char **digits);
 int					repeat_check(t_list *stack_a, int num);
 t_list				*add_link(t_list *list, int num);
 int					correct_order(t_list *stack_a);
