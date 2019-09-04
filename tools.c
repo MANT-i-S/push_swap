@@ -6,22 +6,34 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:11:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 20:00:01 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/04 16:10:47 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_list(t_list *list)
+void	print_list(t_list *stack_a, t_list *stack_b)
 {
-	while (list != NULL)
+	while (stack_a != NULL && stack_b != NULL)
 	{
-		printf("%d\n", (list->node));
-		list = list->next;
+		printf("|%-9d|  |%9d|\n", stack_a->node, stack_b->node);
+		stack_a = stack_a->next;
+		stack_b = stack_b->next;
 	}
+	while (stack_a != NULL)
+	{
+		printf("|%-9d|\n", stack_a->node);
+		stack_a = stack_a->next;
+	}
+	while (stack_b != NULL)
+	{
+		printf("  |%9d|\n", stack_b->node);
+		stack_b = stack_b->next;
+	}
+	printf("|:::::::::|::|:::::::::|\n");
 }
 
-int		error(char *msg)
+void	error(char *msg)
 {
 	ft_putendl(msg);
 	exit(1);
