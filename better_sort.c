@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 20:15:29 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/02 14:13:06 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 18:55:11 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ void	better_sort(t_list *stack_a)
 	if (tab->len <= 3)
 		sort_1_3(stack_a, tab);
 	if (tab->len > 3 && tab->len <= 5)
+	{
 		sort_4_8(stack_a, stack_b, tab);
+		tab->notfree = 1;
+	}
 	if (tab->len > 5)
 	{
 		tab->min = 1;

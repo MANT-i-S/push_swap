@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 14:55:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/03 16:34:59 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 18:56:11 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	do_sa_sb(t_list *stack)
 	int tmp;
 
 	if (stack)
-		tmp = stack->node;
-	if (stack->next != NULL)
 	{
-		stack->node = stack->next->node;
-		stack = stack->next;
-		stack->node = tmp;
+		tmp = stack->node;
+		if (stack->next != NULL)
+		{
+			stack->node = stack->next->node;
+			stack = stack->next;
+			stack->node = tmp;
+		}
 	}
 }
 
@@ -33,11 +35,11 @@ t_list	*rm_first_node(t_list *stack)
 	toremove = stack;
 	if (stack)
 	{
+		if (stack->next == NULL)
+			return (0);
 		if (stack->next != NULL)
 			stack = stack->next;
 		free(toremove);
-		if (stack->next == NULL)
-			return (0);
 	}
 	return (stack);
 }

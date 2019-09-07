@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/10 15:50:54 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/03 16:34:09 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 19:03:55 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	check_spot(t_table *tab, int node)
 	return (i);
 }
 
-int	check_minispot(t_table *tab, int node)
+int	minispot(t_table *tab, int node)
 {
 	int i;
 

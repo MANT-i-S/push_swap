@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 21:11:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/04 16:10:47 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 17:00:34 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_list(t_list *stack_a, t_list *stack_b)
 {
+	printf("|:::::::::|::|:::::::::|\n");
 	while (stack_a != NULL && stack_b != NULL)
 	{
 		printf("|%-9d|  |%9d|\n", stack_a->node, stack_b->node);
@@ -22,12 +23,12 @@ void	print_list(t_list *stack_a, t_list *stack_b)
 	}
 	while (stack_a != NULL)
 	{
-		printf("|%-9d|\n", stack_a->node);
+		printf("|%-9d|  |         |\n", stack_a->node);
 		stack_a = stack_a->next;
 	}
 	while (stack_b != NULL)
 	{
-		printf("  |%9d|\n", stack_b->node);
+		printf("|         |  |%9d|\n", stack_b->node);
 		stack_b = stack_b->next;
 	}
 	printf("|:::::::::|::|:::::::::|\n");

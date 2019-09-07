@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/08 22:00:23 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/04 15:47:14 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 18:57:46 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	pre(t_list *stack_a, t_list *s_b, t_table *tab, char **cmd)
 {
 	while (cmd[tab->j] != NULL)
 	{
-		if (!cmd_c(cmd[tab->j], "rrr"))
-		{
-			stack_a = do_rra_rrb(stack_a);
-			s_b = do_rra_rrb(s_b);
-		}
-		else if (!cmd_c(cmd[tab->j], "pa"))
+		if (!cmd_c(cmd[tab->j], "pa"))
 		{
 			stack_a = pre_pa_pb(s_b, stack_a);
 			s_b = rm_first_node(s_b);
+		}
+		else if (!cmd_c(cmd[tab->j], "pb"))
+		{
+			s_b = pre_pa_pb(stack_a, s_b);
+			stack_a = rm_first_node(stack_a);
 		}
 		else
 			dis(stack_a, s_b, tab, cmd);
@@ -69,39 +69,40 @@ void	pre(t_list *stack_a, t_list *s_b, t_table *tab, char **cmd)
 
 void	dis(t_list *stack_a, t_list *s_b, t_table *tab, char **cmd)
 {
-	if (!cmd_c(cmd[tab->j], "pb"))
-	{
-		s_b = pre_pa_pb(stack_a, s_b);
-		stack_a = rm_first_node(stack_a);
-	}
-	else if (!cmd_c(cmd[tab->j], "sa"))
+	if (!cmd_c(cmd[tab->j], "sa"))
 		do_sa_sb(stack_a);
 	else if (!cmd_c(cmd[tab->j], "ra"))
 		do_ra_rb(stack_a);
+	else if (!cmd_c(cmd[tab->j], "rb"))
+		do_ra_rb(s_b);
 	else if (!cmd_c(cmd[tab->j], "rra"))
 		stack_a = do_rra_rrb(stack_a);
 	else if (!cmd_c(cmd[tab->j], "sb"))
 		do_sa_sb(s_b);
-	else if (!cmd_c(cmd[tab->j], "rb"))
-		do_ra_rb(s_b);
 	else if (!cmd_c(cmd[tab->j], "rrb"))
 		s_b = do_rra_rrb(s_b);
+	las(stack_a, s_b, tab, cmd);
+}
+
+void	las(t_list *stack_a, t_list *s_b, t_table *tab, char **cmd)
+{
+	if (!cmd_c(cmd[tab->j], "ss"))
+	{
+		do_sa_sb(stack_a);
+		do_sa_sb(s_b);
+	}
+	else if (!cmd_c(cmd[tab->j], "rr"))
+	{
+		do_ra_rb(stack_a);
+		do_ra_rb(s_b);
+	}
+	else if (!cmd_c(cmd[tab->j], "rrr"))
+	{
+		stack_a = do_rra_rrb(stack_a);
+		s_b = do_rra_rrb(s_b);
+	}
 	if (tab->debug)
 		print_list(stack_a, s_b);
 	tab->j++;
 	pre(stack_a, s_b, tab, cmd);
-}
-
-void	errorko(void)
-{
-	printf("\033[0;31m");
-	printf("%s\n", "KO");
-	exit(1);
-}
-
-void	errorok(void)
-{
-	printf("\033[0;32m");
-	printf("%s\n", "OK");
-	exit(1);
 }
