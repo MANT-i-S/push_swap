@@ -6,7 +6,7 @@
 /*   By: sholiak <sholiak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 13:49:36 by sholiak           #+#    #+#             */
-/*   Updated: 2019/09/06 19:04:43 by sholiak          ###   ########.fr       */
+/*   Updated: 2019/09/06 19:16:43 by sholiak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	push_swap(t_list *stack_a, char **digits)
 	j--;
 	while (j >= 0)
 	{
+		ft_strdigits(digits[j]);
 		num = ft_atoi(digits[j]);
 		stack_a = add_link(stack_a, num);
 		if (repeat_check(stack_a, num))
